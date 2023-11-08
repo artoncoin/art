@@ -453,7 +453,7 @@ header.menu-sticky {
 .iq-banner {
   position: relative;
   padding: 11% 0 6%;
-  z-index: -1; 
+  /* z-index: -1;  */
 }
 
 .iq-banner:before {
