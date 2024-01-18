@@ -204,16 +204,16 @@
                         <div class="iq-countdown">
                             <h2 class="iq-tw-8 iq-font-yellow"  data-translate="presaleStart">Presale Start In:</h2>
                             <ul id="countdown">
-                                <li class="border-white"><span class="days">00</span>
-                                    <p class="days_text ">Days</p>
+                                <li class="border-white"><span class="days" id="day">00</span>
+                                    <p class="days_text " >Days</p>
                                 </li>
-                                <li class=" border-white"><span class="hours">00</span>
+                                <li class=" border-white"><span class="hours" id="hr">00</span>
                                     <p class="hours_text">Hours</p>
                                 </li>
-                                <li class=" border-white"><span class="minutes">00</span>
+                                <li class=" border-white"><span class="minutes" id="min">00</span>
                                     <p class="minutes_text">Minutes</p>
                                 </li>
-                                <li class="border-white"><span class="seconds">00</span>
+                                <li class="border-white"><span class="seconds"  id="sec">00</span>
                                     <p class="seconds_text">Seconds</p>
                                 </li>
                             </ul>
@@ -2212,6 +2212,29 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         function bscscan(){
           //  alert("test")
         }
+        function updateTimer() {
+	// Set the target date and time
+	const targetDate = new Date('April 15, 2024 20:00:00 UTC');
+
+	// Get the current date and time in UTC
+	const currentDate = new Date();
+	console.log(targetDate > currentDate)
+	// Calculate the time difference in milliseconds
+	const timeDifference = targetDate - currentDate;
+
+	// Convert the time difference to days, hours, minutes, and seconds
+	document.getElementById('day').innerHTML = `${Math.floor(timeDifference / (1000 * 60 * 60 * 24))}`;
+	document.getElementById('hr').innerHTML = `${Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}`;
+	document.getElementById('min').innerHTML = ` ${Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60)) }`;
+	document.getElementById('sec').innerHTML = `${Math.floor((timeDifference % (1000 * 60)) / 1000) }`;
+
+	// Display the remaining time
+	// console.log(`Time remaining until ${targetDate.toUTCString()}:`);
+	// console.log(`${remainingDays} days, ${remainingHours} hours, ${remainingMinutes} minutes, ${remainingSeconds} seconds`);
+}
+
+// Call the updateTimer function every second
+setInterval(updateTimer, 1000);
     </script>
 </body>
 
